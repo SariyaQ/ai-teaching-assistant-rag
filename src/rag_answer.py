@@ -1,13 +1,16 @@
+import os
+import streamlit as st
 from openai import OpenAI
 from dotenv import load_dotenv
 
-from src. embedding_client import create_embeddings
-from src. retriever import retrieve_top_chunks
+from src.embedding_client import create_embeddings
+from src.retriever import retrieve_top_chunks
 
 load_dotenv()
 
-client = OpenAI()
+api_key = st.secrets.get("OPENAI_API_KEY", os.getenv("OPENAI_API_KEY"))
 
+client = OpenAI(api_key=api_key)
 
 def generate_answer(question, chunks, chunk_embeddings, top_k=3, threshold=0.15):
     question_embedding = create_embeddings([question])[0]
