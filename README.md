@@ -9,6 +9,10 @@ The application extracts text from PDF files, splits the content into chunks, ge
 
 ![AI Teaching Assistant](assets/app-preview.png)
 
+## 🌐 Live Demo
+
+Try the app here: https://ai-teaching-assistant-rag-2f8tqxk4in4gazcfpxrebr.streamlit.app/
+
 ## ✨ Features
 
 - 📄 Upload PDF documents
