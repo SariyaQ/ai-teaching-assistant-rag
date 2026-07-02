@@ -11,7 +11,12 @@ st.set_page_config(
 )
 
 st.title("📚 AI Teaching Assistant")
-st.caption("Ask questions based only on your uploaded PDF document.")
+
+st.markdown(
+    """
+Ask questions about your PDF using **Retrieval-Augmented Generation (RAG)** and **OpenAI GPT**.
+"""
+)
 
 if "messages" not in st.session_state:
     st.session_state.messages = []
@@ -48,22 +53,25 @@ with st.sidebar:
 
             st.success("Document prepared successfully.")
 
-        st.markdown("### Status")
-        st.success("🟢 Ready")
+        st.divider()
 
-        st.markdown("### File")
-        st.write(st.session_state.file_name)
+        st.subheader("📄 Document Information")
 
-        st.markdown("### Chunks")
-        st.write(len(st.session_state.chunks))
+        st.markdown(f"**File:**  \n{st.session_state.file_name}")
 
-        if st.button("Clear chat"):
+        st.markdown(f"**Chunks:**  \n{len(st.session_state.chunks)}")
+
+        st.markdown("**Embedding Model:**  \ntext-embedding-3-small")
+
+        st.success("✅ Document Ready")
+
+        if st.button("🗑 Clear Conversation"):
             st.session_state.messages = []
             st.rerun()
     else:
         st.warning("Please upload a PDF.")
 
-st.markdown("## 💬 Chat")
+st.subheader("💬 Chat with your document")
 
 if st.session_state.chunks is None:
     st.info("Upload a PDF from the sidebar to start asking questions.")
@@ -72,7 +80,7 @@ else:
         with st.chat_message(message["role"]):
             st.write(message["content"])
 
-    question = st.chat_input("Ask anything about your document...")
+    question = st.chat_input("Ask a question...")
 
     if question:
         st.session_state.messages.append(
@@ -82,7 +90,7 @@ else:
         with st.chat_message("user"):
             st.write(question)
 
-        with st.spinner("Searching document and generating answer..."):
+        with st.spinner("Analyzing document..."):
             answer = generate_answer(
                 question,
                 st.session_state.chunks,
@@ -95,3 +103,9 @@ else:
 
         with st.chat_message("assistant"):
             st.write(answer)
+
+st.divider()
+
+st.caption(
+    "Built with ❤️ using Python, Streamlit, OpenAI and Retrieval-Augmented Generation (RAG)."
+)

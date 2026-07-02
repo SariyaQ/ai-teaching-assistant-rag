@@ -5,6 +5,9 @@ A Retrieval-Augmented Generation (RAG) application that allows users to upload P
 The application extracts text from PDF files, splits the content into chunks, generates OpenAI embeddings, retrieves the most relevant information using semantic search, and generates accurate answers with GPT.
 
 ---
+## 📸 Application Preview
+
+![AI Teaching Assistant](assets/app-preview.png)
 
 ## ✨ Features
 
