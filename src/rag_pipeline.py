@@ -1,6 +1,6 @@
-from pdf_reader import read_pdf
-from chunker import chunk_text
-from embedding_client import create_embeddings
+from src. pdf_reader import read_pdf
+from src. chunker import chunk_text
+from src. embedding_client import create_embeddings
 
 
 def prepare_document(file_path, chunk_size=1000):

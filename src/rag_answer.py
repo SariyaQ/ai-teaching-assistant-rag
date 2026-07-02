@@ -1,8 +1,8 @@
 from openai import OpenAI
 from dotenv import load_dotenv
 
-from embedding_client import create_embeddings
-from retriever import retrieve_top_chunks
+from src. embedding_client import create_embeddings
+from src. retriever import retrieve_top_chunks
 
 load_dotenv()
 
