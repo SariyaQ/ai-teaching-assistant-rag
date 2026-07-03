@@ -3,6 +3,7 @@ import streamlit as st
 
 from src.rag_pipeline import prepare_document
 from src.rag_answer import generate_answer
+os.makedirs("uploads", exist_ok=True)
 
 st.set_page_config(
     page_title="AI Teaching Assistant",
